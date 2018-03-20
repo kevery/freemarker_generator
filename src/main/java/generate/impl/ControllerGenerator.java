@@ -2,7 +2,7 @@ package generate.impl;
 
 import consts.FileTypeEnum;
 import generate.Generator;
-import uitl.Properate;
+import uitl.Property;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,8 +41,8 @@ public class ControllerGenerator extends Generator {
 
 
     public static void main(String[] args) {
-        Properate properate = new Properate();
-        String order_setting = properate.stringObjectMap.get("order_setting");
+        Property property = new Property();
+        String order_setting = property.stringObjectMap.get("order_setting");
         System.out.println(order_setting);
     }
 }

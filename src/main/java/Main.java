@@ -16,27 +16,27 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-//        Template command = FreeMarkerUtil.getTemplate("command.ftl");
-
-//        String dir = "target";
-//
-//        List<Map<String, String>> build = build();
-//        String suffix = ".java";
-//        for (Map<String, String> map : build) {
-//            String fileName = "Batch" + map.get("command") + "Command" + suffix;
-//
-//            FileOutputStream fileOutputStream = new FileOutputStream(new File(dir + "/" + fileName));
-//            command.process(map, new BufferedWriter(new OutputStreamWriter(fileOutputStream)));
-//            fileOutputStream.close();
-//        }
-
-//        ControllerGenerator generator = new ControllerGenerator();
-//        generator.setTableName("order_setting");
-//        generator.process();
 
         new FreeMarkerFacade("order_setting").generaterAll();
-
+        
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static List<Map<String, String>> build() {
 

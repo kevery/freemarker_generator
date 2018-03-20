@@ -13,7 +13,7 @@ public class DomainGenerator extends Generator {
 
     @Override
     public String buildOutFileName(String tableName) {
-        return convertUpCanmal(convertUpCanmal(tableName)  + FileTypeEnum.JAVA.getSuffix());
+        return convertUpCanmal(tableName  + FileTypeEnum.JAVA.getSuffix());
 
     }
 
@@ -25,7 +25,8 @@ public class DomainGenerator extends Generator {
     @Override
     public void initTemplateParam() {
         Map<String, Object> map = new HashMap<>();
-        map.put("domain", getModal_desc());//备注
+        map.put("comment", getModal_desc());//备注
+        map.put("domain",convertUpCanmal(getTableName()));//备注
         setMap(map);
     }
 

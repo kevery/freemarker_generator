@@ -4,15 +4,13 @@ import com.google.common.base.CaseFormat;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import uitl.FreeMarkerUtil;
-import uitl.Properate;
+import uitl.Property;
 
 import java.io.*;
 import java.util.Map;
 
 /**
  * 抽象生成类
- * <p>
- * 2018/3/20
  */
 public abstract class Generator {
 
@@ -73,7 +71,7 @@ public abstract class Generator {
     public void setFileOutputStream() throws FileNotFoundException {
         setFileOutDir();
 
-        File fileOutDir = new File("ftl/" + tableName + fileOutDirStr);
+        File fileOutDir = new File("target/" + tableName + fileOutDirStr);
 
 
         if (!fileOutDir.exists()) {
@@ -125,7 +123,7 @@ public abstract class Generator {
     }
 
     public String getModal_desc() {
-        Properate properate = new Properate();
-        return properate.stringObjectMap.get(getTableName());
+        Property property = new Property();
+        return property.stringObjectMap.get(getTableName());
     }
 }

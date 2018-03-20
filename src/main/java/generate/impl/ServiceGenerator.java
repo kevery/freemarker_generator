@@ -2,7 +2,6 @@ package generate.impl;
 
 import consts.FileTypeEnum;
 import generate.Generator;
-import uitl.Properate;
 
 import java.util.HashMap;
 import java.util.Map;
