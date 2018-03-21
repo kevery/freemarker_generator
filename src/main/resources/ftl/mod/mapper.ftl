@@ -36,7 +36,6 @@
                 <if test="${col["javaType"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}}</if>
                 </#if>
             </#list>
-
         </set>
         <where>
             <if test="id != null">
@@ -114,7 +113,6 @@
             keyProperty="id" parameterType="com.fb.bir.pojo.${domain}">
         insert into fb_${table_name}
         <trim prefix="(" suffix=")" suffixOverrides=",">
-
             <#list columns as col>
                 <#if col_has_next>
                     <if test="${col["javaName"]} != null">
@@ -125,12 +123,9 @@
                         ${col["name"]}
                     </if>
                 </#if>
-
             </#list>
-
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-
         <#list columns as col>
             <#if col_has_next>
             <if test="${col["javaName"]} != null">
@@ -141,10 +136,7 @@
                 ${r"#{"}${col["name"]},jdbcType=${col["jdbcType"]}},
             </if>
             </#if>
-
         </#list>
-
-
         </trim>
     </insert>
 </mapper>

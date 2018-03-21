@@ -14,7 +14,7 @@ public class DBUtils {
 
     private static SimpleDataSource dataSource = new SimpleDataSource(
             Dialect.MYSQL,
-            "jdbc:mysql://rm-2ze402770n42sz2w8no.mysql.rds.aliyuncs.com:3306/fb_shop",
+            "jdbc:mysql://rm-2ze402770n42sz2w8no.mysql.rds.aliyuncs.com:3306/fb_shop?useInformationSchema=true&amp;remarks=true",
             "root",
             "1qaZ2wsX3edC"
     );
@@ -22,6 +22,12 @@ public class DBUtils {
     private static DBMetadataUtils dbMetadataUtils = new DBMetadataUtils(dataSource);
 
 
+    /**
+     * 表名获取字段信息
+     * @param tableName
+     * @return
+     * @throws Exception
+     */
     public static List<Column> getCoumnsByTableName(String tableName) throws Exception {
         DatabaseConfig config = new DatabaseConfig("fb_shop", "fb_shop", tableName);
         List<IntrospectedTable> list = dbMetadataUtils.introspectTables(config);
@@ -40,8 +46,6 @@ public class DBUtils {
                     column.getJavaProperty() + " - " +
                     column.getFullyQualifiedJavaType().getFullyQualifiedName() + " - " +
                     column.getRemarks());
-
-
             Column columnDomain = new Column();
             columnDomain.setJdbcType(column.getJdbcTypeName());
             columnDomain.setJavaType(column.getFullyQualifiedJavaType().getShortName());
@@ -51,6 +55,23 @@ public class DBUtils {
             columns.add(columnDomain);
         }
         return columns;
+    }
+
+    /**
+     * 表名获取表备注
+     * @param tableName
+     * @return
+     * @throws Exception
+     */
+    public static String getCommentByTableName(String tableName) throws Exception {
+        DatabaseConfig config = new DatabaseConfig("fb_shop", "fb_shop", tableName);
+        List<IntrospectedTable> list = dbMetadataUtils.introspectTables(config);
+        if (list.size() < 1) {
+            throw new RuntimeException("表 "+tableName + " 不存在,请检查数据库");
+        }
+        IntrospectedTable introspectedTable = list.get(0);
+
+        return introspectedTable.getRemarks();
     }
 
 
