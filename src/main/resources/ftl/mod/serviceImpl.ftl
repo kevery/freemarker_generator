@@ -18,8 +18,7 @@ public class ${domain}ServiceImpl implements ${domain}Service {
 
 
     @Autowired
-    private ${domain}Dao
-<${domain}> ${domain_low}DaoImpl;
+    private ${domain}Dao<${domain}> ${domain_low}DaoImpl;
 
     @Override
     public void save(${domain} p) {
@@ -33,37 +32,33 @@ public class ${domain}ServiceImpl implements ${domain}Service {
     }
 
     @Override
-    public PagingResult
-    <${domain}> selectPagination(PageEntity pe) {
+    public PagingResult<${domain}> selectPagination(PageEntity pe) {
         return ${domain_low}DaoImpl.selectPagination(pe);
-        }
+    }
 
-        @Override
-        public int update(${domain} pl) {
-        return ${domain_low}DaoImpl.update(pl);
-        }
+    @Override
+    public int update(${domain} pl) {
+    return ${domain_low}DaoImpl.update(pl);
+    }
 
-        @Override
-        public int update(Map
-        <String
-        , Object> m) {
-        return ${domain_low}DaoImpl.updateParam(m);
-        }
+    @Override
+    public int update(Map<String , Object> m) {
+    return ${domain_low}DaoImpl.updateParam(m);
+    }
 
-        @Override
-        public int delete(Long primaryKey) {
-        return ${domain_low}DaoImpl.delete(primaryKey);
-        }
+    @Override
+    public int delete(Long primaryKey) {
+    return ${domain_low}DaoImpl.delete(primaryKey);
+    }
 
-        @Override
-        public ${domain} findById(long id) {
-        return ${domain_low}DaoImpl.get(id);
-        }
+    @Override
+    public ${domain} findById(long id) {
+    return ${domain_low}DaoImpl.get(id);
+    }
 
-        @Override
-        public List
-        <${domain}> selectAll() {
-            return ${domain_low}DaoImpl.selectParam(Collections.emptyMap());
-            }
+    @Override
+    public List <${domain}> selectAll() {
+        return ${domain_low}DaoImpl.selectParam(Collections.emptyMap());
+    }
 
 }

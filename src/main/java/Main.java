@@ -18,7 +18,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         new FreeMarkerFacade("order_setting").generaterAll();
-        
     }
 
 

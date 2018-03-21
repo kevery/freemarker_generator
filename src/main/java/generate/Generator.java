@@ -62,7 +62,7 @@ public abstract class Generator {
 
     public abstract String buildOutFileName(String tableName);
 
-    public abstract void initTemplateParam();
+    public abstract void initTemplateParam() throws Exception;
 
     public abstract String getTemplateName();
 
@@ -84,7 +84,7 @@ public abstract class Generator {
         }
     }
 
-    public void process() throws IOException, TemplateException {
+    public void process() throws Exception {
         initTemplateParam();
         setFileOutputStream();
         this.getTemplate().process(getMap(), new BufferedWriter(new OutputStreamWriter(fileOutputStream)));

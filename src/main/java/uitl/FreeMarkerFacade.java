@@ -39,6 +39,10 @@ public class FreeMarkerFacade {
         ServiceImplGenerator serviceImplGenerator = new ServiceImplGenerator();
         serviceImplGenerator.setTableName(tableName);
         serviceImplGenerator.process();
+
+        MapperGenerator mapperGenerator = new MapperGenerator();
+        mapperGenerator.setTableName(tableName);
+        mapperGenerator.process();
         
         
     }
