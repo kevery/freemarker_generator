@@ -12,12 +12,7 @@ import java.util.List;
  */
 public class DBUtils {
 
-    private static SimpleDataSource dataSource = new SimpleDataSource(
-            Dialect.MYSQL,
-            "jdbc:mysql://rm-2ze402770n42sz2w8no.mysql.rds.aliyuncs.com:3306/fb_shop?useInformationSchema=true&amp;remarks=true",
-            "root",
-            "1qaZ2wsX3edC"
-    );
+    private static SimpleDataSource dataSource = null;
 
     private static DBMetadataUtils dbMetadataUtils = new DBMetadataUtils(dataSource);
 
