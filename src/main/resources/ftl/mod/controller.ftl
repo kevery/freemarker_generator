@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * ${comment}Controller
  *
- * 2018/3/19
+ *
  */
 @Controller
 @RequestMapping("/${mapper_name}")
