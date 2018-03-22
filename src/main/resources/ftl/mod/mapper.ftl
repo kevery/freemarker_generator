@@ -116,11 +116,11 @@
             <#list columns as col>
                 <#if col_has_next>
                     <if test="${col["javaName"]} != null">
-                        ${col["name"]},
+                        ${col["javaName"]},
                     </if>
                 <#else>
                     <if test="${col["javaName"]} != null">
-                        ${col["name"]}
+                        ${col["javaName"]}
                     </if>
                 </#if>
             </#list>

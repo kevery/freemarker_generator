@@ -16,7 +16,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        new FreeMarkerFacade("business_order").generaterAll();
+        new FreeMarkerFacade("order_sales_topic").generaterAll();
     }
 
 
