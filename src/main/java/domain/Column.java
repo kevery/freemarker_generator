@@ -10,9 +10,11 @@ public class Column {
 
     private String jdbcType;//数据库类型
 
-    private String javaType;
+    private String javaType;//java类型
 
     private String javaName;//JAVA属性名
+
+    private String comment;//注解
 
     public String getName() {
         return name;
@@ -40,6 +42,14 @@ public class Column {
 
     public String getJavaName() {
         return javaName;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public void setJavaName(String javaName) {

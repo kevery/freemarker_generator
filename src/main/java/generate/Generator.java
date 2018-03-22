@@ -2,9 +2,7 @@ package generate;
 
 import com.google.common.base.CaseFormat;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import uitl.FreeMarkerUtil;
-import uitl.Property;
 
 import java.io.*;
 import java.util.Map;
@@ -120,10 +118,5 @@ public abstract class Generator {
      */
     public String convertUpCanmal(String string) {
         return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, string);
-    }
-
-    public String getModal_desc() {
-        Property property = new Property();
-        return property.stringObjectMap.get(getTableName());
     }
 }

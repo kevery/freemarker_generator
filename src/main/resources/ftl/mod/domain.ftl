@@ -4,17 +4,12 @@ package com.fb.bir.pojo;
  * ${comment}
  */
 public class ${domain} {
-	private Long id;
+	<#list columns as col>
+    /**
+     * ${col["comment"]}
+     */
+	private ${col["javaType"]} ${col["javaName"]};
 
-
-
-    public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-    //todo
+	</#list>
 
 }

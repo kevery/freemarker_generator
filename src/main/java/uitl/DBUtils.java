@@ -4,6 +4,7 @@ import com.github.abel533.database.*;
 import com.github.abel533.utils.DBMetadataUtils;
 import domain.Column;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +12,29 @@ import java.util.List;
  * 2018/3/21
  */
 public class DBUtils {
+    private static PropertyLoadUtil propertyLoadUtil = new PropertyLoadUtil();
 
-    private static SimpleDataSource dataSource = null;
+    private static SimpleDataSource dataSource;
+
+    static {
+        try {
+            dataSource = new SimpleDataSource(
+                    Dialect.MYSQL,
+                    propertyLoadUtil.loadDBURL(),
+                    propertyLoadUtil.loadDBUser(),
+                    propertyLoadUtil.loadDBPassWord()
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private static DBMetadataUtils dbMetadataUtils = new DBMetadataUtils(dataSource);
 
 
     /**
      * 表名获取字段信息
+     *
      * @param tableName
      * @return
      * @throws Exception
@@ -27,7 +43,7 @@ public class DBUtils {
         DatabaseConfig config = new DatabaseConfig("fb_shop", "fb_shop", tableName);
         List<IntrospectedTable> list = dbMetadataUtils.introspectTables(config);
         if (list.size() < 1) {
-            throw new RuntimeException("表 "+tableName + " 不存在,请检查数据库");
+            throw new RuntimeException("表 " + tableName + " 不存在,请检查数据库");
         }
         IntrospectedTable introspectedTable = list.get(0);
 
@@ -46,6 +62,7 @@ public class DBUtils {
             columnDomain.setJavaType(column.getFullyQualifiedJavaType().getShortName());
             columnDomain.setName(column.getName());
             columnDomain.setJavaName(CommanUtils.convertLowCanmal(column.getName()));
+            columnDomain.setComment(column.getRemarks());
 
             columns.add(columnDomain);
         }
@@ -54,6 +71,7 @@ public class DBUtils {
 
     /**
      * 表名获取表备注
+     *
      * @param tableName
      * @return
      * @throws Exception
@@ -62,7 +80,7 @@ public class DBUtils {
         DatabaseConfig config = new DatabaseConfig("fb_shop", "fb_shop", tableName);
         List<IntrospectedTable> list = dbMetadataUtils.introspectTables(config);
         if (list.size() < 1) {
-            throw new RuntimeException("表 "+tableName + " 不存在,请检查数据库");
+            throw new RuntimeException("表 " + tableName + " 不存在,请检查数据库");
         }
         IntrospectedTable introspectedTable = list.get(0);
 
