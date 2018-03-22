@@ -5,7 +5,7 @@
     <resultMap id="BaseResultMap" type="com.fb.bir.pojo.${domain}">
 
         <#list columns as col>
-            <id column="${col["name"]}" property="${col["javaType"]}" jdbcType="${col["jdbcType"]}"/>
+            <id column="${col["name"]}" property="${col["javaName"]}" jdbcType="${col["jdbcType"]}"/>
         </#list>
 
     </resultMap>
@@ -31,9 +31,9 @@
         <set>
             <#list columns as col>
                 <#if col_has_next>
-                <if test="${col["javaType"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}},</if>
+                <if test="${col["javaName"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}},</if>
                 <#else>
-                <if test="${col["javaType"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}}</if>
+                <if test="${col["javaName"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}}</if>
                 </#if>
             </#list>
         </set>
@@ -50,9 +50,9 @@
         <set>
             <#list columns as col>
                 <#if col_has_next>
-                <if test="${col["javaType"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}},</if>
+                <if test="${col["javaName"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}},</if>
                 <#else>
-                <if test="${col["javaType"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}}</if>
+                <if test="${col["javaName"]} != null">${col["name"]}=${r"#{"}${col["javaName"]},jdbcType=${col["jdbcType"]}}</if>
                 </#if>
             </#list>
         </set>
@@ -75,7 +75,7 @@
                 <#if col_index==0>
                 <if test="${col["javaName"]} != null">${col["name"]} = ${r"#{"}${col["javaName"]}}</if>
                 <#else>
-                and <if test="${col["javaName"]} != null">${col["name"]} = ${r"#{"}${col["javaName"]}}</if>
+                <if test="${col["javaName"]} != null">and ${col["name"]} = ${r"#{"}${col["javaName"]}}</if>
                 </#if>
             </#list>
 
@@ -90,7 +90,7 @@
                 <#if col_index==0>
                 <if test="${col["javaName"]}!= null">${col["name"]} = ${r"#{"}${col["javaName"]}}</if>
                 <#else>
-                and <if test="${col["javaName"]}!= null">${col["name"]} = ${r"#{"}${col["javaName"]}}</if>
+                <if test="${col["javaName"]}!= null">and ${col["name"]} = ${r"#{"}${col["javaName"]}}</if>
                 </#if>
             </#list>
         </where>

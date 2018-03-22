@@ -36,6 +36,8 @@ public class ControllerGenerator extends Generator {
         map.put("comment", modalDesc);//备注
         map.put("mapper_name", convertLowCanmal(getTableName()));//映射路径
         map.put("classname", buildOutFileName(getTableName()).split("/.")[0]);//类文件class名
+        map.put("domain", convertUpCanmal(getTableName()));
+        map.put("domain_low", convertLowCanmal(getTableName()));
 
         setMap(map);
     }
