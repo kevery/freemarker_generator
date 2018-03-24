@@ -4,9 +4,11 @@ import com.github.abel533.database.*;
 import com.github.abel533.utils.DBMetadataUtils;
 import com.google.common.base.CaseFormat;
 import domain.Column;
+import org.joda.time.DateTime;
 import org.junit.Test;
 import uitl.DBUtils;
 
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -27,20 +29,6 @@ public class CommenTestTest {
         System.out.println(tableName2);
     }
 
-    @Test
-    public void tableName() throws Exception{
-        SimpleDataSource dataSource = new SimpleDataSource(
-                Dialect.MYSQL,
-                "jdbc:mysql://rm-2ze402770n42sz2w8no.mysql.rds.aliyuncs.com:3306/fb_shop",
-                "root",
-                "1qaZ2wsX3edC"
-        );
-
-        DBMetadataUtils dbMetadataUtils = new DBMetadataUtils(dataSource);
-
-        DatabaseConfig config = new DatabaseConfig("fb_shop", "fb_shop","order_setting");
-        List<IntrospectedTable> list = dbMetadataUtils.introspectTables(config);
-    }
 
 
     @Test
@@ -48,5 +36,11 @@ public class CommenTestTest {
         List<Column> order_setting = DBUtils.getCoumnsByTableName("fb_order_setting");
 
 
+    }
+
+    @Test
+    public void timetest() {
+        DateTime dateTime = new DateTime();
+        System.out.println(dateTime.toString("yyyy-MM-dd HH:mm:ss"));
     }
 }
